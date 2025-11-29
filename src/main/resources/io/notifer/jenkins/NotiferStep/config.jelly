@@ -1,0 +1,40 @@
+<?jelly escape='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form" xmlns:c="/lib/credentials">
+
+    <f:entry title="${%Message}" field="message">
+        <f:textbox/>
+    </f:entry>
+
+    <f:entry title="${%Topic}" field="topic">
+        <f:textbox placeholder="Leave empty to use global default"/>
+    </f:entry>
+
+    <f:entry title="${%Credentials}" field="credentialsId">
+        <c:select/>
+    </f:entry>
+
+    <f:entry title="${%Title}" field="title">
+        <f:textbox placeholder="Optional title"/>
+    </f:entry>
+
+    <f:entry title="${%Priority}" field="priority">
+        <f:select>
+            <f:option value="1" selected="${instance.priority == 1}">1 - Minimum</f:option>
+            <f:option value="2" selected="${instance.priority == 2}">2 - Low</f:option>
+            <f:option value="3" selected="${instance.priority == 3 or instance.priority == 0}">3 - Default</f:option>
+            <f:option value="4" selected="${instance.priority == 4}">4 - High</f:option>
+            <f:option value="5" selected="${instance.priority == 5}">5 - Maximum</f:option>
+        </f:select>
+    </f:entry>
+
+    <f:advanced>
+        <f:entry title="${%Server URL}" field="serverUrl">
+            <f:textbox placeholder="Leave empty to use global configuration"/>
+        </f:entry>
+
+        <f:entry field="failOnError">
+            <f:checkbox title="${%Fail build on notification error}" default="false"/>
+        </f:entry>
+    </f:advanced>
+
+</j:jelly>

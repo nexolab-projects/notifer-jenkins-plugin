@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>plugin</artifactId>
+        <version>4.75</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>io.notifer</groupId>
+    <artifactId>notifer</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>hpi</packaging>
+
+    <name>Notifer Plugin</name>
+    <description>Send notifications to Notifer topics from Jenkins pipelines and freestyle jobs</description>
+    <url>https://github.com/jenkinsci/notifer-plugin</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>notifer</id>
+            <name>Notifer Team</name>
+            <email>support@notifer.io</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/jenkinsci/notifer-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:jenkinsci/notifer-plugin.git</developerConnection>
+        <url>https://github.com/jenkinsci/notifer-plugin</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <jenkins.version>2.387.3</jenkins.version>
+        <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>repo.jenkins-ci.org</id>
+            <url>https://repo.jenkins-ci.org/public/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repo.jenkins-ci.org</id>
+            <url>https://repo.jenkins-ci.org/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencies>
+        <!-- Pipeline support -->
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-step-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-cps</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-job</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-basic-steps</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-durable-task-step</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Credentials support -->
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>credentials</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>plain-credentials</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>credentials-binding</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Structs for pipeline snippet generator -->
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>structs</artifactId>
+        </dependency>
+
+        <!-- HTTP client -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.14</version>
+        </dependency>
+
+        <!-- JSON processing -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.jenkins.tools.bom</groupId>
+                <artifactId>bom-2.387.x</artifactId>
+                <version>2543.vfb_1571b_5f85e</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jenkins-ci.tools</groupId>
+                <artifactId>maven-hpi-plugin</artifactId>
+                <configuration>
+                    <minimumJavaVersion>${java.version}</minimumJavaVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
