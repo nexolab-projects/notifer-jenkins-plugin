@@ -321,6 +321,7 @@ public class NotiferStep extends Step implements Serializable {
         // --- Form Validation ---
         // Note: credentialsId and topic use class="required" in jelly
 
+        @POST
         public FormValidation doCheckPriority(@QueryParameter int value) {
             if (value < 0 || value > 5) {
                 return FormValidation.warning("Priority should be 0 (auto) or between 1 and 5");
