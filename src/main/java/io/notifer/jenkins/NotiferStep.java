@@ -346,6 +346,7 @@ public class NotiferStep extends Step implements Serializable {
         /**
          * Fill credentials dropdown.
          */
+        @POST
         public ListBoxModel doFillCredentialsIdItems(
                 @AncestorInPath Item item,
                 @QueryParameter String credentialsId) {

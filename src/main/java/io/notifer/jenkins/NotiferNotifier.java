@@ -360,6 +360,7 @@ public class NotiferNotifier extends Notifier implements SimpleBuildStep {
         /**
          * Fill credentials dropdown.
          */
+        @POST
         public ListBoxModel doFillCredentialsIdItems(
                 @AncestorInPath Item item,
                 @QueryParameter String credentialsId) {
